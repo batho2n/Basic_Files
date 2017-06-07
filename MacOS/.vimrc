@@ -39,4 +39,4 @@ syntax on
 filetype plugin indent on
 
 au FileType python map <f2> :w<Enter>:!python % 
-au FileType c map <f2>: !gcc -o %< %
+au FileType c map <f2>: !make
