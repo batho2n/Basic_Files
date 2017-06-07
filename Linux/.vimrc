@@ -20,22 +20,27 @@ set nowrap         " 자동 줄바꿈 하지 않음
 set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 
 au BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\ exe "norm g`\"" |
-			\ endif
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\ exe "norm g`\"" |
+\ endif
 
 set laststatus=2 " 상태바 표시를 항상한다
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 
-파일 인코딩을 한국어로
+" 파일 인코딩을 한국어로
 if $LANG[0]=='k' && $LANG[1]=='o'
-set fileencoding=korea
+    set fileencoding=korea
 endif
 
 if has("syntax")
-syntax on
+    syntax on
 endif
 
 set foldmethod=marker
 set foldmarker={{{,}}}
+
+filetype plugin indent on
+
+au FileType python map <f2> :w<Enter>:!python %
+au FileType c map <f2>: !make
 
